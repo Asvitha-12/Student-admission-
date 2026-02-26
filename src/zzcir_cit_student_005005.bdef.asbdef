@@ -1,0 +1,59 @@
+managed implementation in class ZZCIBP_R_CIT_STUDENT_005005 unique;
+strict ( 2 );
+with draft;
+extensible;
+define behavior for ZZCIR_CIT_STUDENT_005005 alias ZzcirCitStudent005005
+persistent table ZCIT_STUDENT_005
+extensible
+draft table ZZCICT_STDN_D005
+etag master LocalLastChangedAt
+lock master total etag LastChangedAt
+authorization master( global )
+{
+  field ( readonly )
+   ID,
+   LocalCreatedBy,
+   LocalCreatedAt,
+   LocalLastChangedBy,
+   LocalLastChangedAt,
+   LastChangedAt;
+
+  field ( numbering : managed )
+   ID;
+
+
+  create;
+  update;
+  delete;
+
+  draft action Activate optimized;
+  draft action Discard;
+  draft action Edit;
+  draft action Resume;
+  draft determine action Prepare;
+
+  mapping for ZCIT_STUDENT_005 corresponding extensible
+  {
+    ID = ID;
+    Firstname = FIRSTNAME;
+    Lastname = LASTNAME;
+    Dob = DOB;
+    Age = AGE;
+    Gender = GENDER;
+    FatherName = FATHER_NAME;
+    MotherName = MOTHER_NAME;
+    ContactNumber = CONTACT_NUMBER;
+    Email = EMAIL;
+    Course = COURSE;
+    Address = ADDRESS;
+    City = CITY;
+    Pincode = PINCODE;
+    AdmissionDate = ADMISSION_DATE;
+    LocalCreatedBy = LOCAL_CREATED_BY;
+    LocalCreatedAt = LOCAL_CREATED_AT;
+    LocalLastChangedBy = LOCAL_LAST_CHANGED_BY;
+    LocalLastChangedAt = LOCAL_LAST_CHANGED_AT;
+    LastChangedAt = LAST_CHANGED_AT;
+  }
+
+}
